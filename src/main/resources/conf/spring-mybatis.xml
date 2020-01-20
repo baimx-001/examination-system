@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/util
+       http://www.springframework.org/schema/util/spring-util.xsd">
+    <!--配置连接池-->
+    <context:property-placeholder location="classpath:conf/jdbc.properties"/>
+    <bean id="dbcp" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+    <!--配置SqlSessionFactoryBean
+        spring集成mybatis，不再需要mybatis的配置文件，使用
+        SqlSessionFactoryBean来代替mybatis的配置文件
+    -->
+    <bean id="ssf" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!--注入连接池
+            不再使用mybatis自带的连接池，而是使用spring管理的连接池
+        -->
+        <property name="dataSource" ref="dbcp"/>
+        <!--指定映射文件的位置-->
+        <property name="mapperLocations" value="classpath:mappers/*.xml"/>
+    </bean>
+    <!--配置MapperScannerConfigure
+        MapperScannerConfigure负责扫描指定包下面的所有的Mapper
+        映射器，然后生成符合这些映射要求的对象（其实，就是调用SqlSession
+        的getMapper方法），另外，还会将这些对象添加到spring容器里面。
+        （默认的id是首字母小写之后的接口名）,也可以使用@Respoditory来设置id。
+    -->
+    <bean id="mapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+    <!--Mapper映射器所在的包-->
+    <property name="basePackage" value="com.study.exam.mapper"/>
+    </bean>
+</beans>
