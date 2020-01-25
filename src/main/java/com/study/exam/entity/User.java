@@ -1,11 +1,21 @@
 package com.study.exam.entity;
 
+import org.mybatis.generator.config.ModelType;
+
 import java.util.Date;
 import javax.persistence.*;
 
 @Table(name = "user")
 public class User {
-    @GeneratedValue(generator = "JDBC")
+    public User() {
+    }
+
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private String username;

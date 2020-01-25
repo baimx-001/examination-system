@@ -1,43 +1,70 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: BMX
-  Date: 2020/1/20
-  Time: 17:15
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8"
-         language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Title</title>
-</head>
-<style>
-    body{
-        background:url("/img/login-background.jpg") no-repeat center fixed;
-    }
-</style>
-<body>
-<center>
-    <h1 style="color:red">在线考试系统</h1>
-    <form id="indexform" name="indexForm" action="/checkLogin" method="post">
-        <table border="0">
-            <tr>
-                <td>账号：</td>
-                <td><input type="text" name="username"></td>
-            </tr>
-            <tr>
-                <td>密码：</td>
-                <td><input type="password" name="password"><span>${message}</span>
-                </td>
-            </tr>
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 引入bootstrap -->
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <!-- 引入JQuery  bootstrap.js-->
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        body{
+            background: url(img/a.jpg)repeat;
+        }
+        #login-box {
+            /*border:1px solid #F00;*/
+            padding: 35px;
+            border-radius:15px;
+            background: #56666B;
+            color: #fff;
+        }
 
-        </table>
-        <br>
-        <input type="submit" value="登录" style="color:#BC8F8F">
-    </form>
-    <%--<form action="zhuce.jsp">--%>
-    <%--<input type="submit" value="注册" style="color:#BC8F8F">--%>
-    <%--</form>--%>
-</center>
+    </style>
+</head>
+<body>
+<div class="container" id="top">
+    <div class="row" style="margin-top: 280px; ">
+        <div class="col-md-4"></div>
+        <div class="col-md-4" id="login-box">
+            <form class="form-horizontal" role="form" action="/checkLogin" id="from1" method="post">
+                <div class="form-group">
+                    <label  class="col-sm-3 control-label">用户id</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="username" placeholder="请输入名字" name="username">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">密码</label>
+                    <div class="col-sm-9">
+                        <input type="password" class="form-control" id="password" placeholder="请输入密码" name="password">
+                    </div>
+                </div>
+                <%--<div class="form-group">--%>
+                <%--<div class="col-sm-offset-2 col-sm-10">--%>
+                <%--<div class="checkbox">--%>
+                <%--<label class="checkbox-inline">--%>
+                <%--<input type="radio" name="role" value="1" checked>管理员--%>
+                <%--</label>--%>
+                <%--<label class="checkbox-inline">--%>
+                <%--<input type="radio" name="role" value="2">老师--%>
+                <%--</label>--%>
+                <%--<label class="checkbox-inline">--%>
+                <%--<input type="radio" name="role" value="3">学生--%>
+                <%--</label>--%>
+                <%--</div>--%>
+                <%--</div>--%>
+                <%--</div>--%>
+                <div class="form-group pull-right" style="margin-right: 15px;">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-default btn-info">登录</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>
 </body>
 </html>

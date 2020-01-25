@@ -21,7 +21,7 @@ public class LoginController {
     public ModelAndView checkLogin(String username,String password){
         boolean flag=userService.checkLogin(username,password);
         if(flag){
-            return new ModelAndView("home");
+            return new ModelAndView("addSubject");
         }else {
             Map<String,String> map=new HashMap<String,String>();
             map.put("message","用户名或密码错误");
