@@ -19,4 +19,18 @@
   <select id="findInitSubject" resultMap="BaseResultMap" >
     select * from subject where id=(select min(id) from subject)
   </select>
+  <select id="findPrevSubject" resultMap="BaseResultMap">
+    select *  from subject  where id 	<![CDATA[ < ]]> #{id}  order by  id desc limit 1
+  </select>
+  <select id="findNextSubject" resultMap="BaseResultMap">
+    select *  from subject  where id > #{id} order by  id asc limit 1
+  </select>
+
+  <select id="getSubjectsByIds" resultMap="BaseResultMap">
+    select *  from subject  where id in
+    <foreach collection="list" item="item" separator="," open ="(" close=")">
+      #{item}
+    </foreach>
+  </select>
+
 </mapper>

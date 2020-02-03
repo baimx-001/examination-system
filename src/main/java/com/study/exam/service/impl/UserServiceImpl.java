@@ -14,12 +14,12 @@ public class UserServiceImpl implements UserService {
     @Resource
     UserMapper userMapper;
     @Override
-    public boolean checkLogin(String username, String password) {
+    public int  checkLogin(String username, String password) {
         User user=userMapper.findByUserNameAndPassWord(username,password);
         if(user!=null){
-            return true;
+            return user.getId();
         }
-        return false;
+        return  0;
     }
     @Override
     public String addUser(String username, String password) {
