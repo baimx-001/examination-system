@@ -27,7 +27,7 @@
                     </div>
                 </div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" action="/subject/showSubject" id="editfrom" method="post">
+                    <form class="form-horizontal" role="form" id="editfrom" method="post">
                         <span id="idspan">
                             <input type="text" class="form-control" id="subjectid"/>
                         </span>
@@ -91,6 +91,7 @@
         });
     });
     function showSubject(data){
+        //JSON.parse()从一个字符串中解析出json对象
         var data1 = JSON.parse(data);
         $("#idspan").hide();
         $("#subjectid").val(data1.id);
@@ -106,7 +107,6 @@
             showSubject(data);
         });
     });
-
     $("#next").click(function(){
         $.get("/subject/getSubjectByIdAndType?id="+$("#subjectid").val()+"&type=next&option="+$('input:radio[name="option"]:checked').val(),function(data,status){
             $('input[type=radio][name="option"]:checked').prop("checked", false);
@@ -130,9 +130,6 @@
             }
         });
     });
-
-
-
 
 </script>
 </html>

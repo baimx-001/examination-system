@@ -25,7 +25,7 @@
         <div class="form-group">
             <label  class="col-sm-2 control-label">考试情况</label>
             <div class="col-sm-10">
-                分数${score}
+                <h1>分数${score}</h1>
             </div>
         </div>
 

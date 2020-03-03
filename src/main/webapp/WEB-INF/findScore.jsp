@@ -27,7 +27,7 @@
         <div class="form-group">
             <label  class="col-sm-2 control-label">考试情况</label>
             <div class="col-sm-10">
-                您尚未最终分数为：${score}
+                <h1>您本次考试的最终分数为：${score}</h1>
             </div>
         </div>
 

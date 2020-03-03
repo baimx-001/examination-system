@@ -9,7 +9,7 @@ public interface SubjectService {
                                 String optionD, String rightOption,
                                 double score);
 
-    Subject getSubjectByIdAndType(Integer id, String type,String option,int username);
+    Subject getSubjectByIdAndType(Integer id, String type,String option,int userId);
 
     int submitSubjects(Integer id, String option, int userId);
 

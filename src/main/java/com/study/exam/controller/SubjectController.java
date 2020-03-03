@@ -43,7 +43,7 @@ public class SubjectController {
     }
 //    @RequestMapping(value = "/getSubjectByIdAndType",produces = "text/html;charset=utf-8")
 
-    @ResponseBody
+    @ResponseBody//返回结果，不需要返回界面
     @RequestMapping(value = "/getSubjectByIdAndType",produces = "text/html;charset=utf-8")
     public String getSubjectByIdAndType(Integer id, String type, String option, HttpSession session) {
         int userId = (int)session.getAttribute("userId");
