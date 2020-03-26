@@ -9,9 +9,9 @@ import java.util.List;
 
 @Repository
 public interface SubjectMapper extends Mapper<Subject> {
-    public Subject findInitSubject();
-    public Subject findPrevSubject(@Param("id") Integer id);
-    public Subject findNextSubject(@Param("id") Integer id);
+     Subject findInitSubject();
+     Subject findPrevSubject(@Param("id") Integer id);
+     Subject findNextSubject(@Param("id") Integer id);
 
     List<Subject> getSubjectsByIds(@Param("list") List<Integer> subjectIdList);
 }
